@@ -1,0 +1,5 @@
+{
+    "Lucario": {"ID": "lucario", "Type": ["Fighting", "Steel"], "Base Stats": {"HP": "70", "Attack": "110", "Defense": "70", "Sp. Atk": "115", "Sp. Def": "70", "Speed": "90"}},
+    "Blissey": {"ID": "blissey", "Type": ["Normal"], "Base Stats": {"HP": "255", "Attack": "10", "Defense": "10", "Sp. Atk": "75", "Sp. Def": "135", "Speed": "55"}},
+    "Houndoom": {"ID": "houndoom", "Type": ["Dark", "Fire"], "Base Stats": {"HP": "75", "Attack": "90", "Defense": "50", "Sp. Atk": "110", "Sp. Def": "80", "Speed": "95"}}
+}

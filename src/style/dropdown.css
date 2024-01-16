@@ -1,0 +1,31 @@
+.searchable-dropdown{
+    display: flex;
+    flex-direction: column;
+    justify-content: stretch;
+    align-self: stretch;
+    height: 4rem;
+}
+
+.dropdown-list{
+    display: flex;
+    flex-direction: column;
+    justify-content: stretch;
+    overflow: auto;
+    background-color: #fff;
+    align-self: center;
+    position:absolute;
+    width: 100%;
+}
+
+.dropdown-list-item{
+    display: flex;
+    flex-direction: row;
+    flex-shrink: 0;
+    flex-grow: 1;
+    justify-content: flex-start;
+    cursor: pointer;
+}
+
+.dropdown-list-item:hover {
+    background-color: #ddd;
+}
