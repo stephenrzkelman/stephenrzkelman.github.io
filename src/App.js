@@ -6,7 +6,7 @@ function App() {
   return (
     <div className="App">
       <h1>Pokemon Damage Calculator Coming Soon!</h1>
-      <CardBox cards={[1,1,1]}/>
+      {<CardBox cards={[1,1]}/>}
       <div style={{textAlign:"left"}}>
         <h2>Known Issues/WIP:</h2>
         <ul>
