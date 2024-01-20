@@ -6,12 +6,24 @@ function SearchableDropdown(props){
     // search bar
     // dropdown
 
-    const [filterFunction, setFilterFunction] = useState(allowAll);
     const [dropdownOpen, setDropdownOpen] = useState(false);
     const [value, setValue] = useState("");
 
-    function allowAll(pokemon_name){
-        return pokemon_name.toString().toLowerCase().includes(value.toLowerCase());
+    function name_startswith(pokemon_name){
+        return pokemon_name.toString().toLowerCase().startsWith(value.toLowerCase());
+    }
+
+    function name_includes(pokemon_name){
+        return (
+            pokemon_name.toString().toLowerCase().includes(value.toLowerCase()) && 
+            !name_startswith(pokemon_name)
+        );
+    }
+
+    function filteredItems(){
+        let startswith_items = props.items.sort().filter(name_startswith);
+        let includes_items = props.items.sort().filter(name_includes);
+        return startswith_items.concat(includes_items)
     }
 
     return(
@@ -26,7 +38,7 @@ function SearchableDropdown(props){
             {
                 dropdownOpen &&
                 <DropdownList 
-                    items={props.items.sort().filter(allowAll)}
+                    items={filteredItems()}
                     setValue={setValue}
                     closeDropdown={setDropdownOpen}
                     selectionAction={props.selectionAction}
