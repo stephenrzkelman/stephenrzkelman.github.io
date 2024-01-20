@@ -18,7 +18,7 @@ function SearchableDropdown(props){
             {
                 dropdownOpen &&
                 <DropdownList 
-                    items={props.items}
+                    items={props.items.sort()}
                     setValue={setValue}
                     closeDropdown={setDropdownOpen}
                     selectionAction={props.selectionAction}
