@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/static/css/main.58b23301.css",
-    "main.js": "/static/js/main.9641a52d.js",
+    "main.css": "/static/css/main.743bac12.css",
+    "main.js": "/static/js/main.bb9fee2c.js",
     "static/js/787.c922dae8.chunk.js": "/static/js/787.c922dae8.chunk.js",
     "static/media/necrozma-ultra.png": "/static/media/necrozma-ultra.12cde6962fcc829aef53.png",
     "static/media/metagross-mega.png": "/static/media/metagross-mega.1b2bec1e3037a4a969f0.png",
@@ -197,12 +197,12 @@
     "static/media/darkrai.png": "/static/media/darkrai.a94e3f484230725e1159.png",
     "static/media/logo.svg": "/static/media/logo.6ce24c58023cc2f8fd88fe9d219db6c6.svg",
     "index.html": "/index.html",
-    "main.58b23301.css.map": "/static/css/main.58b23301.css.map",
-    "main.9641a52d.js.map": "/static/js/main.9641a52d.js.map",
+    "main.743bac12.css.map": "/static/css/main.743bac12.css.map",
+    "main.bb9fee2c.js.map": "/static/js/main.bb9fee2c.js.map",
     "787.c922dae8.chunk.js.map": "/static/js/787.c922dae8.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.58b23301.css",
-    "static/js/main.9641a52d.js"
+    "static/css/main.743bac12.css",
+    "static/js/main.bb9fee2c.js"
   ]
 }
