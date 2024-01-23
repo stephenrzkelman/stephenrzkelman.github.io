@@ -1,13 +1,17 @@
+import '../style/inputs.css'
+
 function EVSlider(props){
     /* TODO: generalize slider code */
     return(
-        <div style={{display:"flex", flexDirection:"row", alignItems:"center"}}>
-            {`HP`}
+        <div className="ev-slider">
+            <p style={{width: "3rem"}}>
+                {props.statName}
+            </p>
             <input 
                 type = "text"
                 className = "text-input"
-                value={props.hpev}
-                onChange={(e)=> props.setHpev(e.target.value)}
+                value={props.evValue}
+                onChange={(e)=> props.setEvValue(e.target.value)}
                 style={{width:"2rem"}}
             />
             {/* TODO:  robust validation for text input */}
@@ -17,8 +21,15 @@ function EVSlider(props){
                 max="252"
                 step="4"
                 className = "slider"
-                value={props.hpev}
-                onChange={(e)=> props.setHpev(e.target.value)}
+                value={props.evValue}
+                onChange={(e)=> props.setEvValue(e.target.value)}
+            />
+            <input 
+                type = "text"
+                className = "text-input"
+                value={props.ivValue}
+                onChange={(e)=> props.setIvValue(e.target.value)}
+                style={{width:"2rem"}}
             />
         </div>
     )

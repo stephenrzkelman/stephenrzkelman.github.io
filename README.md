@@ -9,3 +9,8 @@
 [Sprites/Box Art](https://pokemondb.net/sprites)
 
 
+https://stackoverflow.com/questions/50802528/convert-js-array-to-dictionary-hashmap
+
+https://stackoverflow.com/questions/63122527/react-hooks-update-dictionary-state 
+
+

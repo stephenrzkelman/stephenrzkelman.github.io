@@ -7,7 +7,11 @@ import SearchableDropdown from './SearchableDropdown.js';
 
 function PokemonCard(props) {
     const [pokemon, setPokemon] = useState("Blissey");
-    const [hpev, setHpev] = useState(0);
+    // TODO: is this ok to do without using state?
+    const stats = ["HP", "Atk", "Def", "SpA", "SpD", "Spe"]
+    const [evValues, setEvValues] = useState(Object.fromEntries(stats.map(statName => [statName, 0])));
+    const [ivValues, setIvValues] = useState(Object.fromEntries(stats.map(statName => [statName, 0])));
+
     return(
         <div className="card"> {/* TODO: Make a new class for this formatting */}
             <h2>{pokemon}</h2>
@@ -32,15 +36,17 @@ function PokemonCard(props) {
                     ([statName, statValue]) => <Stat statName={statName} statValue={statValue}/>
                 )}
             </div>
-            {/* <div className="actions">
-                <button 
-                    className="button"
-                >
-                    OK
-                </button>
-            </div>*/ }
-            {/* TODO: ev sliders */}
-            <EVSlider hpev={hpev} setHpev={setHpev}/>
+            {
+                stats.map(
+                    (statName) => <EVSlider 
+                        statName={statName}
+                        evValue={evValues[statName]}
+                        setEvValue={(newValue) => setEvValues({...evValues, [statName]:newValue})}
+                        ivValue={ivValues[statName]}
+                        setIvValue={(newValue) => setIvValues({...ivValues, [statName]:newValue})}
+                    />
+                )
+            }
         </div>
     );
 }
