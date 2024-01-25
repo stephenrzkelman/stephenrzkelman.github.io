@@ -2,6 +2,15 @@ import '../style/inputs.css'
 
 function EVSlider(props){
     /* TODO: generalize slider code */
+    // trueStatValue, assuming level 100, neutral nature
+    function trueStatValue(){
+        if (props.statName === "HP"){
+            return 2 * Number(props.base) + Number(props.ivValue) + Math.floor(Number(props.evValue)/4) + 100 + 10;
+        }
+        else{
+            return 2 * Number(props.base) + Number(props.ivValue) + Math.floor(Number(props.evValue)/4) + 5
+        }
+    }
     return(
         <div className="ev-slider">
             <p style={{width: "3rem"}}>
@@ -31,6 +40,9 @@ function EVSlider(props){
                 onChange={(e)=> props.setIvValue(e.target.value)}
                 style={{width:"2rem"}}
             />
+            <p style={{width: "3rem"}}>
+                {trueStatValue()}
+            </p>
         </div>
     )
     

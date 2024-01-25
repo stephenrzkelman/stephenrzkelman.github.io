@@ -8,9 +8,9 @@ import SearchableDropdown from './SearchableDropdown.js';
 function PokemonCard(props) {
     const [pokemon, setPokemon] = useState("Blissey");
     // TODO: is this ok to do without using state?
-    const stats = ["HP", "Atk", "Def", "SpA", "SpD", "Spe"]
-    const [evValues, setEvValues] = useState(Object.fromEntries(stats.map(statName => [statName, 0])));
-    const [ivValues, setIvValues] = useState(Object.fromEntries(stats.map(statName => [statName, 0])));
+    const stats = {"HP":"HP", "Attack":"Atk", "Defense":"Def", "Sp. Atk": "SpA", "Sp. Def": "SpD", "Speed": "Spe"};
+    const [evValues, setEvValues] = useState(Object.fromEntries(Object.keys(stats).map(statName => [statName, 0])));
+    const [ivValues, setIvValues] = useState(Object.fromEntries(Object.keys(stats).map(statName => [statName, 0])));
 
     return(
         <div className="card"> {/* TODO: Make a new class for this formatting */}
@@ -37,9 +37,10 @@ function PokemonCard(props) {
                 )}
             </div>
             {
-                stats.map(
+                (Object.keys(stats)).map(
                     (statName) => <EVSlider 
-                        statName={statName}
+                        statName={stats[statName]}
+                        base={allMons[pokemon]["Base Stats"][statName]}
                         evValue={evValues[statName]}
                         setEvValue={(newValue) => setEvValues({...evValues, [statName]:newValue})}
                         ivValue={ivValues[statName]}
