@@ -2,6 +2,7 @@ import allMons from '../resources/pokemon.json';
 import Stat from './Stat.js';
 import EVSlider from './EVSlider.js';
 import TypeIcon from './TypeIcon.js';
+import TextInput from './TextInput.js';
 import { useState } from 'react';
 import SearchableDropdown from './SearchableDropdown.js';
 
@@ -37,13 +38,16 @@ function PokemonCard(props) {
                     ([statName, statValue]) => <Stat statName={statName} statValue={statValue}/>
                 )}
             </div>
-            <div>
+            <div style={{
+                display:"flex", 
+                flexDirection:"row", 
+                alignItems:"baseline"
+            }}>
                 <p>Level: </p>
-                <input 
-                    type="text"
-                    className="text-input"
-                    value={value}
-                    onChange={(e)=> {setLevel(e.target.value)}}
+                <TextInput 
+                    value={level}
+                    onChange={setLevel}
+                    width={2}
                 />
             </div>
             {

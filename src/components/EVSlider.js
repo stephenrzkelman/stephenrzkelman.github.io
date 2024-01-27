@@ -6,11 +6,11 @@ function EVSlider(props){
     function trueStatValue(){
         if (props.statName === "HP"){
             let multiplier = 2 * Number(props.base) + Number(props.ivValue) + Math.floor(Number(props.evValue)/4);
-            return Math.floor(multiplier * level / 100) + level + 10;
+            return Math.floor(multiplier * Number(props.level) / 100) + Number(props.level) + 10;
         }
         else{
             let multiplier = 2 * Number(props.base) + Number(props.ivValue) + Math.floor(Number(props.evValue)/4);
-            return  Math.floor(multiplier * level / 100) + 5;
+            return  Math.floor(multiplier * Number(props.level) / 100) + 5;
         }
     }
     return(
