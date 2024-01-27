@@ -32,7 +32,7 @@ function SearchableDropdown(props){
                 type="text"
                 className="text-input"
                 value={value}
-                onClick={()=>{setDropdownOpen(!dropdownOpen); console.log(`value: \"${value}\"`)}}
+                onClick={()=>{setDropdownOpen(!dropdownOpen); console.log(`value: "${value}"`)}}
                 onChange={(e)=> {setValue(e.target.value)}}
             />
             {

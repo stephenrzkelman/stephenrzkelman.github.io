@@ -1,4 +1,4 @@
-import Card from './Card';
+// import Card from './Card';
 import PokemonCard from './PokemonCard';
 
 function CardBox(props) {
