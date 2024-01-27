@@ -11,6 +11,7 @@ function PokemonCard(props) {
     const stats = {"HP":"HP", "Attack":"Atk", "Defense":"Def", "Sp. Atk": "SpA", "Sp. Def": "SpD", "Speed": "Spe"};
     const [evValues, setEvValues] = useState(Object.fromEntries(Object.keys(stats).map(statName => [statName, 0])));
     const [ivValues, setIvValues] = useState(Object.fromEntries(Object.keys(stats).map(statName => [statName, 0])));
+    const [level, setLevel] = useState(100);
 
     return(
         <div className="card"> {/* TODO: Make a new class for this formatting */}
@@ -36,11 +37,21 @@ function PokemonCard(props) {
                     ([statName, statValue]) => <Stat statName={statName} statValue={statValue}/>
                 )}
             </div>
+            <div>
+                <p>Level: </p>
+                <input 
+                    type="text"
+                    className="text-input"
+                    value={value}
+                    onChange={(e)=> {setLevel(e.target.value)}}
+                />
+            </div>
             {
                 (Object.keys(stats)).map(
                     (statName) => <EVSlider 
                         statName={stats[statName]}
                         base={allMons[pokemon]["Base Stats"][statName]}
+                        level={level}
                         evValue={evValues[statName]}
                         setEvValue={(newValue) => setEvValues({...evValues, [statName]:newValue})}
                         ivValue={ivValues[statName]}
