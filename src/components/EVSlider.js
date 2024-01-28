@@ -1,4 +1,5 @@
 import '../style/inputs.css'
+import TextInput from './TextInput';
 
 function EVSlider(props){
     /* TODO: generalize slider code */
@@ -18,12 +19,10 @@ function EVSlider(props){
             <p style={{width: "3rem"}}>
                 {props.statName}
             </p>
-            <input 
-                type = "text"
-                className = "text-input"
+            <TextInput
                 value={props.evValue}
-                onChange={(e)=> props.setEvValue(e.target.value)}
-                style={{width:"2rem"}}
+                onChange={props.setEvValue}
+                width={2}
             />
             {/* TODO:  robust validation for text input */}
             <input 
@@ -35,12 +34,10 @@ function EVSlider(props){
                 value={props.evValue}
                 onChange={(e)=> props.setEvValue(e.target.value)}
             />
-            <input 
-                type = "text"
-                className = "text-input"
+            <TextInput
                 value={props.ivValue}
-                onChange={(e)=> props.setIvValue(e.target.value)}
-                style={{width:"2rem"}}
+                onChange={props.setIvValue}
+                width={2}
             />
             <p style={{width: "3rem"}}>
                 {trueStatValue()}
