@@ -4,16 +4,6 @@ import TextInput from './TextInput';
 function EVSlider(props){
     /* TODO: generalize slider code */
     // trueStatValue, assuming level 100, neutral nature
-    function trueStatValue(){
-        if (props.statName === "HP"){
-            let multiplier = 2 * Number(props.base) + Number(props.ivValue) + Math.floor(Number(props.evValue)/4);
-            return Math.floor(multiplier * Number(props.level) / 100) + Number(props.level) + 10;
-        }
-        else{
-            let multiplier = 2 * Number(props.base) + Number(props.ivValue) + Math.floor(Number(props.evValue)/4);
-            return  Math.floor(multiplier * Number(props.level) / 100) + 5;
-        }
-    }
     return(
         <div className="ev-slider">
             <p style={{width: "3rem"}}>
@@ -39,9 +29,6 @@ function EVSlider(props){
                 onChange={props.setIvValue}
                 width={2}
             />
-            <p style={{width: "3rem"}}>
-                {trueStatValue()}
-            </p>
         </div>
     )
     

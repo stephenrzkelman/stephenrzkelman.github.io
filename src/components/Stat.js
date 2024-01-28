@@ -8,8 +8,8 @@ function Stat(props) {
                 {props.statValue}
             </div>
             <div 
-                style={{width: `${1+Math.min(1,props.statValue/200)*9}rem`}} 
-                className={`barchart-bar barchart-rank-${Math.min(6,Math.ceil(props.statValue/30))}`}
+                style={{width: `${1+Math.min(1,props.statValue/600)*9}rem`}} 
+                className={`barchart-bar barchart-rank-${Math.min(6,Math.ceil(props.statValue/100))}`}
             ></div>
         </div>
     )

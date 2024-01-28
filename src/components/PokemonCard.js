@@ -5,6 +5,7 @@ import TypeIcon from './TypeIcon.js';
 import TextInput from './TextInput.js';
 import { useState } from 'react';
 import SearchableDropdown from './SearchableDropdown.js';
+import StatDisplay from './StatDisplay.js';
 
 function PokemonCard(props) {
     const [pokemon, setPokemon] = useState("Blissey");
@@ -13,6 +14,18 @@ function PokemonCard(props) {
     const [evValues, setEvValues] = useState(Object.fromEntries(Object.keys(stats).map(statName => [statName, 0])));
     const [ivValues, setIvValues] = useState(Object.fromEntries(Object.keys(stats).map(statName => [statName, 0])));
     const [level, setLevel] = useState(100);
+
+    function trueStatValue(statName){
+        let baseStats = (allMons[pokemon]["Base Stats"]);
+        if (statName === "HP"){
+            let multiplier = 2 * Number(baseStats[statName]) + Number(ivValues[statName]) + Math.floor(Number(evValues[statName])/4);
+            return Math.floor(multiplier * Number(level) / 100) + Number(level) + 10;
+        }
+        else{
+            let multiplier = 2 * Number(baseStats[statName]) + Number(ivValues[statName]) + Math.floor(Number(evValues[statName])/4);
+            return  Math.floor(multiplier * Number(level) / 100) + 5;
+        }
+    }
 
     return(
         <div className="card"> {/* TODO: Make a new class for this formatting */}
@@ -32,12 +45,9 @@ function PokemonCard(props) {
                     (type)=><TypeIcon type={type}/>)
                 }
             </div>
-            {/* TODO: make stat-box its own component? */}
-            <div className="stat-box">
-                {Object.entries(allMons[pokemon]["Base Stats"]).map(
-                    ([statName, statValue]) => <Stat statName={statName} statValue={statValue}/>
-                )}
-            </div>
+            <StatDisplay
+                statCalc={trueStatValue}
+            />
             <div style={{
                 display:"flex", 
                 flexDirection:"row", 
