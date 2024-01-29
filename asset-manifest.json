@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/static/css/main.4f08ac64.css",
+    "main.css": "/static/css/main.781755f4.css",
     "main.js": "/static/js/main.05d4d92f.js",
     "static/js/787.c922dae8.chunk.js": "/static/js/787.c922dae8.chunk.js",
     "static/media/necrozma-ultra.png": "/static/media/necrozma-ultra.12cde6962fcc829aef53.png",
@@ -196,12 +196,12 @@
     "static/media/deoxys-speed.png": "/static/media/deoxys-speed.b32b3aad0afa8cd33b4d.png",
     "static/media/darkrai.png": "/static/media/darkrai.a94e3f484230725e1159.png",
     "index.html": "/index.html",
-    "main.4f08ac64.css.map": "/static/css/main.4f08ac64.css.map",
+    "main.781755f4.css.map": "/static/css/main.781755f4.css.map",
     "main.05d4d92f.js.map": "/static/js/main.05d4d92f.js.map",
     "787.c922dae8.chunk.js.map": "/static/js/787.c922dae8.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.4f08ac64.css",
+    "static/css/main.781755f4.css",
     "static/js/main.05d4d92f.js"
   ]
 }
