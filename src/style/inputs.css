@@ -17,7 +17,7 @@ input {
     padding: 1px 0px;
     border-width: 2px;
     border-style: inset;
-    border-color: -internal-light-dark(rgb(118, 118, 118), rgb(133, 133, 133));
+    border-color: rgb(133, 133, 133);
     border-image: initial;
     padding-block: 1px;
     padding-inline: 2px;
@@ -27,6 +27,9 @@ input {
     -webkit-appearance: none;
     width: 12rem;
     height: 5px;
+    border-style: inset;
+    border-width: 1.5px;
+    border-color: rgb(133, 133, 133);
     border-radius: 5px;
     outline: none;
     opacity: 0.7;
