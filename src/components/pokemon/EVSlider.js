@@ -1,5 +1,5 @@
-import '../style/inputs.css'
-import TextInput from './TextInput';
+import '../../style/inputs.css'
+import TextInput from '../generic/TextInput';
 
 function EVSlider(props){
     /* TODO: generalize slider code */

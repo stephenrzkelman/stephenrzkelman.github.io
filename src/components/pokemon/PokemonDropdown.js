@@ -1,4 +1,4 @@
-import allMons from '../resources/pokemon.json';
+import allMons from '../../resources/pokemon.json';
 
 
 function PokemonDropdown(props){

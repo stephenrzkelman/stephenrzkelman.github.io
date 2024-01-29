@@ -1,4 +1,4 @@
-import '../style/dropdown.css'
+import '../../style/dropdown.css'
 import DropdownList from './DropdownList.js';
 import { useState } from 'react';
 

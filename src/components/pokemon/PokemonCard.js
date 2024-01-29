@@ -1,10 +1,9 @@
-import allMons from '../resources/pokemon.json';
-import Stat from './Stat.js';
+import allMons from '../../resources/pokemon.json';
 import EVSlider from './EVSlider.js';
 import TypeIcon from './TypeIcon.js';
-import TextInput from './TextInput.js';
+import TextInput from '../generic/TextInput.js';
 import { useState } from 'react';
-import SearchableDropdown from './SearchableDropdown.js';
+import SearchableDropdown from '../generic/SearchableDropdown.js';
 import StatDisplay from './StatDisplay.js';
 
 function PokemonCard(props) {
@@ -35,7 +34,7 @@ function PokemonCard(props) {
                 selectionAction={setPokemon}
             />
             <img 
-                src={require(`../resources/images/${pokemon.toLowerCase()}.png`)}
+                src={require(`../../resources/images/${pokemon.toLowerCase()}.png`)}
                 alt={`${pokemon}`}
                 style={{height:"5rem"}}
             />

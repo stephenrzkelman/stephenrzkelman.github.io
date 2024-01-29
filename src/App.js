@@ -1,5 +1,5 @@
 // import logo from './logo.svg';
-import CardBox from './components/CardBox.js'
+import CardBox from './components/generic/CardBox.js'
 import './App.css';
 
 function App() {

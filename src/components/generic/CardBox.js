@@ -1,5 +1,5 @@
 // import Card from './Card';
-import PokemonCard from './PokemonCard';
+import PokemonCard from '../pokemon/PokemonCard';
 
 function CardBox(props) {
     
