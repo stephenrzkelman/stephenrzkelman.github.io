@@ -13,16 +13,53 @@ function PokemonCard(props) {
     const [evValues, setEvValues] = useState(Object.fromEntries(Object.keys(stats).map(statName => [statName, 0])));
     const [ivValues, setIvValues] = useState(Object.fromEntries(Object.keys(stats).map(statName => [statName, 0])));
     const [level, setLevel] = useState(100);
+    const [nature, setNature] = useState("Adamant");
+    const natures = {
+        "Adamant":	["Attack",	"Sp. Atk"],
+        "Bashful":	["Sp. Atk",	"Sp. Atk"],
+        "Bold":	    ["Defense",	"Attack"],
+        "Brave":    ["Attack",	"Speed"],
+        "Calm":	    ["Sp. Def",	"Attack"],
+        "Careful":	["Sp. Def",	"Sp. Atk"],
+        "Docile":   ["Defense",	"Defense"],
+        "Gentle":   ["Sp. Def",	"Defense"],
+        "Hardy":    ["Attack",	"Attack"],
+        "Hasty":    ["Speed",   "Defense"],
+        "Impish":   ["Defense",	"Sp. Atk"],
+        "Jolly":    ["Speed",   "Sp. Atk"],
+        "Lax":	    ["Defense",	"Sp. Def"],
+        "Lonely":   ["Attack",	"Defense"],
+        "Mild":	    ["Sp. Atk",	"Defense"],
+        "Modest":   ["Sp. Atk",	"Attack"],
+        "Naive":    ["Speed",   "Sp. Def"],
+        "Naughty":	["Attack",	"Sp. Def"],
+        "Quiet":    ["Sp. Atk",	"Speed"],
+        "Quirky":   ["Sp. Def",	"Sp. Def"],
+        "Rash":	    ["Sp. Atk",	"Sp. Def"],
+        "Relaxed":	["Defense",	"Speed"],
+        "Sassy":    ["Sp. Def",	"Speed"],
+        "Serious":	["Speed",   "Speed"],
+        "Timid":    ["Speed",   "Attack"]
+    }
 
     function trueStatValue(statName){
         let baseStats = (allMons[pokemon]["Base Stats"]);
+        let natureModifies = natures[nature];
+        let natureMultiplier = 1;
+        if (natureModifies[0] === statName){
+            natureMultiplier += 0.1;
+        }
+        if (natureModifies[1] === statName){
+            natureMultiplier -= 0.1;
+        }
         if (statName === "HP"){
             let multiplier = 2 * Number(baseStats[statName]) + Number(ivValues[statName]) + Math.floor(Number(evValues[statName])/4);
             return Math.floor(multiplier * Number(level) / 100) + Number(level) + 10;
         }
         else{
             let multiplier = 2 * Number(baseStats[statName]) + Number(ivValues[statName]) + Math.floor(Number(evValues[statName])/4);
-            return  Math.floor(multiplier * Number(level) / 100) + 5;
+            let preNature =  Math.floor(multiplier * Number(level) / 100) + 5;
+            return Math.floor(preNature * natureMultiplier);
         }
     }
 
@@ -57,6 +94,11 @@ function PokemonCard(props) {
                     value={level}
                     onChange={setLevel}
                     width={2}
+                />
+                <p> Nature:</p>
+                <SearchableDropdown
+                    items={Object.keys(natures)}
+                    selectionAction={setNature}
                 />
             </div>
             {
