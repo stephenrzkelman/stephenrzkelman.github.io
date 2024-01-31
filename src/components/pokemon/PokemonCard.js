@@ -13,8 +13,9 @@ function PokemonCard(props) {
     const [evValues, setEvValues] = useState(Object.fromEntries(Object.keys(stats).map(statName => [statName, 0])));
     const [ivValues, setIvValues] = useState(Object.fromEntries(Object.keys(stats).map(statName => [statName, 0])));
     const [level, setLevel] = useState(100);
-    const [nature, setNature] = useState("Adamant");
+    const [nature, setNature] = useState("");
     const natures = {
+        "":         ["", ""],
         "Adamant":	["Attack",	"Sp. Atk"],
         "Bashful":	["Sp. Atk",	"Sp. Atk"],
         "Bold":	    ["Defense",	"Attack"],

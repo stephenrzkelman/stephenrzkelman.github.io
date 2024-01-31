@@ -1,4 +1,5 @@
 import '../../style/dropdown.css'
+import Backdrop from './Backdrop.js';
 import DropdownList from './DropdownList.js';
 import { useState } from 'react';
 
@@ -8,6 +9,10 @@ function SearchableDropdown(props){
 
     const [dropdownOpen, setDropdownOpen] = useState(false);
     const [value, setValue] = useState("");
+
+    function closeDropdown(){
+        setDropdownOpen(false);
+    }
 
     function name_startswith(pokemon_name){
         return pokemon_name.toString().toLowerCase().startsWith(value.toLowerCase());
@@ -36,11 +41,15 @@ function SearchableDropdown(props){
                 onChange={(e)=> {setValue(e.target.value)}}
             />
             {
+                dropdownOpen && 
+                <Backdrop closeDropdown={closeDropdown}/>
+            }
+            {
                 dropdownOpen &&
                 <DropdownList 
                     items={filteredItems()}
                     setValue={setValue}
-                    closeDropdown={setDropdownOpen}
+                    closeDropdown={closeDropdown}
                     selectionAction={props.selectionAction}
                 />
             }
