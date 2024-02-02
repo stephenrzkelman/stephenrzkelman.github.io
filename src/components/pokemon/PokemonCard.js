@@ -9,13 +9,12 @@ import StatDisplay from './StatDisplay.js';
 function PokemonCard(props) {
     const [pokemon, setPokemon] = useState("Blissey");
     // TODO: is this ok to do without using state?
-    const stats = {"HP":"HP", "Attack":"Atk", "Defense":"Def", "Sp. Atk": "SpA", "Sp. Def": "SpD", "Speed": "Spe"};
-    const [evValues, setEvValues] = useState(Object.fromEntries(Object.keys(stats).map(statName => [statName, 0])));
-    const [ivValues, setIvValues] = useState(Object.fromEntries(Object.keys(stats).map(statName => [statName, 0])));
+    const statAbbrevs = {"HP":"HP", "Attack":"Atk", "Defense":"Def", "Sp. Atk": "SpA", "Sp. Def": "SpD", "Speed": "Spe"};
+    const [evValues, setEvValues] = useState(Object.fromEntries(Object.keys(statAbbrevs).map(statName => [statName, 0])));
+    const [ivValues, setIvValues] = useState(Object.fromEntries(Object.keys(statAbbrevs).map(statName => [statName, 0])));
     const [level, setLevel] = useState(100);
-    const [nature, setNature] = useState("");
+    const [nature, setNature] = useState("Serious");
     const natures = {
-        "":         ["", ""],
         "Adamant":	["Attack",	"Sp. Atk"],
         "Bashful":	["Sp. Atk",	"Sp. Atk"],
         "Bold":	    ["Defense",	"Attack"],
@@ -96,16 +95,27 @@ function PokemonCard(props) {
                     onChange={setLevel}
                     width={2}
                 />
+            </div>
+            <div style={{
+                display:"flex", 
+                flexDirection:"row", 
+                alignItems:"baseline"
+            }}>
                 <p> Nature:</p>
                 <SearchableDropdown
-                    items={Object.keys(natures)}
-                    selectionAction={setNature}
+                    items={Object.entries(natures).map(
+                        ([nature, [plus, minus]], _)=>
+                            `${nature} (+${statAbbrevs[plus]}, -${statAbbrevs[minus]})`
+                    )}
+                    selectionAction={(natureText)=>{
+                        setNature(natureText.split(" ")[0]);
+                    }}
                 />
             </div>
             {
-                (Object.keys(stats)).map(
+                (Object.keys(statAbbrevs)).map(
                     (statName) => <EVSlider 
-                        statName={stats[statName]}
+                        statName={statAbbrevs[statName]}
                         base={allMons[pokemon]["Base Stats"][statName]}
                         level={level}
                         evValue={evValues[statName]}
