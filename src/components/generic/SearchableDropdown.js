@@ -2,6 +2,7 @@ import '../../style/dropdown.css'
 import Backdrop from './Backdrop.js';
 import DropdownList from './DropdownList.js';
 import { useState } from 'react';
+import { mod } from '../../utils.js'
 
 function SearchableDropdown(props){
     // search bar
