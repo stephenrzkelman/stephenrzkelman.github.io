@@ -1,7 +1,7 @@
 function DropdownListItem(props){
     return(
         <div 
-            className="dropdown-list-item"
+            className={`dropdown-list-item${props.active ? "-active" : ""}`}
             onClick={
                 ()=>{
                     props.closeDropdown();

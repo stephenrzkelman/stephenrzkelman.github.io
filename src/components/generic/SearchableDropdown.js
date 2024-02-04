@@ -9,6 +9,7 @@ function SearchableDropdown(props){
 
     const [dropdownOpen, setDropdownOpen] = useState(false);
     const [value, setValue] = useState("");
+    const [cursor, setCursor] = useState(0);
 
     function closeDropdown(){
         setDropdownOpen(false);
@@ -31,6 +32,27 @@ function SearchableDropdown(props){
         return startswith_items.concat(includes_items)
     }
 
+    function handleKeyDown(e){
+        let items = filteredItems();
+        let len = items.length
+        if(e.key === 'ArrowDown'){
+            setCursor((cursor + 1).mod(len));
+        }
+        else if(e.key === 'ArrowUp'){
+            setCursor((cursor - 1).mod(len));
+        }
+        else if(e.key === 'Enter'){
+            setValue(items[cursor]);
+            props.selectionAction(items[cursor])
+            closeDropdown();
+            setCursor(0);
+        }
+        else{
+            setDropdownOpen(true);
+        }
+        console.log(cursor);
+    }
+
     return(
         <div className="searchable-dropdown">
             <input 
@@ -38,7 +60,11 @@ function SearchableDropdown(props){
                 className="text-input"
                 value={value}
                 onClick={()=>{setDropdownOpen(!dropdownOpen); console.log(`value: "${value}"`)}}
-                onChange={(e)=> {setValue(e.target.value)}}
+                onChange={(e)=> {
+                    setCursor(0);
+                    setValue(e.target.value);
+                }}
+                onKeyDown={handleKeyDown}
             />
             {
                 dropdownOpen && 
@@ -51,6 +77,7 @@ function SearchableDropdown(props){
                     setValue={setValue}
                     closeDropdown={closeDropdown}
                     selectionAction={props.selectionAction}
+                    cursor={cursor}
                 />
             }
         </div>
