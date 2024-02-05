@@ -9,6 +9,7 @@ function DropdownListItem(props){
                     props.selectionAction(props.value);
                 }
             }
+            ref={props.active ? props.cursorRef : null}
         >
             {props.children}
         </div>

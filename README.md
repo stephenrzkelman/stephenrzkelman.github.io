@@ -21,3 +21,7 @@
 [navigating dropdown with arrow keys](https://stackoverflow.com/questions/42036865/react-how-to-navigate-through-list-by-arrow-keys)
 
 [Changing title/tab contents](https://create-react-app.dev/docs/title-and-meta-tags/)
+
+[Scroll only specific div](https://stackoverflow.com/questions/56688002/javascript-scrollintoview-only-in-immediate-parent)
+
+[Update component after render/return](https://legacy.reactjs.org/docs/hooks-effect.html)

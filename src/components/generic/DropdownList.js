@@ -1,6 +1,18 @@
 import DropdownListItem from "./DropdownListItem.js";
+import { useRef, useEffect } from "react";
 
 function DropdownList(props){
+    const cursorRef = useRef(null);
+
+    function scrollfn(){
+        console.log("Called!");
+        if(cursorRef.current){
+            cursorRef.current.scrollIntoView({block:'nearest'});
+        }
+    }
+
+    useEffect(()=>scrollfn());
+
     return(
         // wrapper for absolute positioning
         <div style={{position:"relative"}}>
@@ -14,11 +26,15 @@ function DropdownList(props){
                             closeDropdown={props.closeDropdown}
                             selectionAction={props.selectionAction}
                             active={props.cursor===index}
+                            cursorRef={cursorRef}
                         >
                             {item}
                         </DropdownListItem>
                     )
                 }
+            </div>
+            <div>
+                {scrollfn()}
             </div>
         </div>
     );
