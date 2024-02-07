@@ -12,8 +12,9 @@ function EVSlider(props){
                 value={props.evValue}
                 onChange={(newValue)=>{
                     newValue = newValue.replace(/\D/g,'');
-                    newValue = Math.max(0,Math.min(252, newValue));
+                    newValue = Math.max(0,Math.min(252, props.remainingEVs, newValue));
                     props.setEvValue(newValue);
+                    console.log(props.remainingEVs);
                 }}
                 width={2}
             />
@@ -25,7 +26,10 @@ function EVSlider(props){
                 step="4"
                 className = "slider"
                 value={props.evValue}
-                onChange={(e)=> props.setEvValue(e.target.value)}
+                onChange={(e)=> {
+                    let newValue = Math.min(props.remainingEVs, e.target.value);
+                    props.setEvValue(newValue);
+                }}
             />
             <TextInput
                 value={props.ivValue}

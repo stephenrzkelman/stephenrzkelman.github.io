@@ -62,6 +62,14 @@ function PokemonCard(props) {
         }
     }
 
+    function remainingEVs(statName){
+        let usedEVs = Object.values(evValues).reduce((sum, ev) => sum + ev,0);
+        if(statName) 
+            usedEVs -= evValues[statName];
+        let unusedEVs = 508 - usedEVs;
+        return unusedEVs;
+    }
+
     return(
         <div className="card"> {/* TODO: Make a new class for this formatting */}
             <h2>{pokemon}</h2>
@@ -119,6 +127,7 @@ function PokemonCard(props) {
                         ivValue={ivValues[statName]}
                         setIvValue={(newValue) => setIvValues({...ivValues, [statName]:newValue})}
                         statValue={trueStatValue(statName)}
+                        remainingEVs={remainingEVs(statName)}
                     />
                 )
             }
