@@ -1,9 +1,12 @@
 function Stat(props) {
     return(
         <div className="stat">
-            <div className="stat-text">
-                {props.statName}
-            </div>
+            {
+                props.statName &&
+                <div className="stat-text">
+                    {props.statName}
+                </div>
+            }
             <div className="stat-num">
                 {props.statValue}
             </div>

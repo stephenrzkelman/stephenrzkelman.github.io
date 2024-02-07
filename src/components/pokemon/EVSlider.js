@@ -1,9 +1,8 @@
 import '../../style/inputs.css'
+import Stat from './Stat';
 import TextInput from '../generic/TextInput';
 
 function EVSlider(props){
-    /* TODO: generalize slider code */
-    // trueStatValue, assuming level 100, neutral nature
     return(
         <div className="ev-slider">
             <p style={{width: "3rem"}}>
@@ -37,6 +36,7 @@ function EVSlider(props){
                 }}
                 width={2}
             />
+            <Stat statValue={props.statValue}/>
         </div>
     )
     

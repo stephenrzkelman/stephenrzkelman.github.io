@@ -4,7 +4,6 @@ import TypeIcon from './TypeIcon.js';
 import TextInput from '../generic/TextInput.js';
 import { useState } from 'react';
 import SearchableDropdown from '../generic/SearchableDropdown.js';
-import StatDisplay from './StatDisplay.js';
 
 function PokemonCard(props) {
     const [pokemon, setPokemon] = useState("Blissey");
@@ -81,9 +80,6 @@ function PokemonCard(props) {
                     (type)=><TypeIcon type={type}/>)
                 }
             </div>
-            <StatDisplay
-                statCalc={trueStatValue}
-            />
             <div style={{
                 display:"flex", 
                 flexDirection:"row", 
@@ -122,6 +118,7 @@ function PokemonCard(props) {
                         setEvValue={(newValue) => setEvValues({...evValues, [statName]:newValue})}
                         ivValue={ivValues[statName]}
                         setIvValue={(newValue) => setIvValues({...ivValues, [statName]:newValue})}
+                        statValue={trueStatValue(statName)}
                     />
                 )
             }
