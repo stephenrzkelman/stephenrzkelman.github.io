@@ -1,4 +1,5 @@
 import allMons from '../../resources/pokemon.json';
+import allMoves from '../../resources/moves.json';
 import EVSlider from './EVSlider.js';
 import TypeIcon from './TypeIcon.js';
 import TextInput from '../generic/TextInput.js';
@@ -7,6 +8,7 @@ import SearchableDropdown from '../generic/SearchableDropdown.js';
 
 function PokemonCard(props) {
     const [pokemon, setPokemon] = useState("Blissey");
+    const [move, setMove] = useState("Flail");
     // TODO: is this ok to do without using state?
     const statAbbrevs = {"HP":"HP", "Attack":"Atk", "Defense":"Def", "Sp. Atk": "SpA", "Sp. Def": "SpD", "Speed": "Spe"};
     const [evValues, setEvValues] = useState(Object.fromEntries(Object.keys(statAbbrevs).map(statName => [statName, 0])));
@@ -131,6 +133,10 @@ function PokemonCard(props) {
                     />
                 )
             }
+            <SearchableDropdown 
+                items={Object.keys(allMoves)}
+                selectionAction={(selectedMove)=>setMove(selectedMove)}
+            />
         </div>
     );
 }
