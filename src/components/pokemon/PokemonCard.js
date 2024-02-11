@@ -53,15 +53,18 @@ function PokemonCard(props) {
         if (natureModifies[1] === statName){
             natureMultiplier -= 0.1;
         }
+        let statValue;
         if (statName === "HP"){
             let multiplier = 2 * Number(baseStats[statName]) + Number(ivValues[statName]) + Math.floor(Number(evValues[statName])/4);
-            return Math.floor(multiplier * Number(level) / 100) + Number(level) + 10;
+            statValue = Math.floor(multiplier * Number(level) / 100) + Number(level) + 10;
         }
         else{
             let multiplier = 2 * Number(baseStats[statName]) + Number(ivValues[statName]) + Math.floor(Number(evValues[statName])/4);
             let preNature =  Math.floor(multiplier * Number(level) / 100) + 5;
-            return Math.floor(preNature * natureMultiplier);
+            statValue = Math.floor(preNature * natureMultiplier);
         }
+        props.setStat(statName, statValue);
+        return statValue;
     }
 
     function remainingEVs(statName){
