@@ -3,18 +3,20 @@ import Stat from './Stat';
 import TextInput from '../generic/TextInput';
 
 function EVSlider(props){
+    const statAbbrevs = {"HP":"HP", "Attack":"Atk", "Defense":"Def", "Sp. Atk": "SpA", "Sp. Def": "SpD", "Speed": "Spe"};
+
     return(
         <div className="ev-slider">
             <p style={{width: "3rem"}}>
-                {props.statName}
+                {statAbbrevs[props.statName]}
             </p>
             <TextInput
                 value={props.evValue}
                 onChange={(newValue)=>{
                     newValue = newValue.replace(/\D/g,'');
-                    newValue = Math.max(0,Math.min(252, props.remainingEVs, newValue));
+                    newValue = Math.max(0,Math.min(252, props.remainingEVs(props.statName), newValue));
                     props.setEvValue(newValue);
-                    console.log(props.remainingEVs);
+                    console.log(props.remainingEVs(props.statName));
                 }}
                 width={2}
             />
@@ -27,7 +29,7 @@ function EVSlider(props){
                 className = "slider"
                 value={props.evValue}
                 onChange={(e)=> {
-                    let newValue = Math.min(props.remainingEVs, e.target.value);
+                    let newValue = Math.min(props.remainingEVs(props.statName), e.target.value);
                     props.setEvValue(newValue);
                 }}
             />
