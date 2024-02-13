@@ -14,19 +14,14 @@ function Duel(props) {
     return(
         <div className="card-box">
             <PokemonCard 
+                ownStats={leftPokemonStats}
                 opponentStats={rightPokemonStats} 
-                setStat={
-                    (statName, statValue) =>
-                    console.log(`set ${statName} to ${statValue}`)
-                }
+                setStats={setLeftPokemonStats}
             />
             <PokemonCard
+                ownStats={rightPokemonStats}
                 opponentStats={leftPokemonStats} 
-                setStat={
-                    (statName, statValue) => {
-                        // setRightPokemonStats({...rightPokemonStats, [statName]:statValue});
-                    }
-                }
+                setStats={setRightPokemonStats}
             />
         </div>
     );

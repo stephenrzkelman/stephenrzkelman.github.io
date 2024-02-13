@@ -3,7 +3,7 @@ import allMoves from '../../resources/moves.json';
 import EVSlider from './EVSlider.js';
 import TypeIcon from './TypeIcon.js';
 import TextInput from '../generic/TextInput.js';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import SearchableDropdown from '../generic/SearchableDropdown.js';
 
 function PokemonCard(props) {
@@ -63,7 +63,6 @@ function PokemonCard(props) {
             let preNature =  Math.floor(multiplier * Number(level) / 100) + 5;
             statValue = Math.floor(preNature * natureMultiplier);
         }
-        props.setStat(statName, statValue);
         return statValue;
     }
 
@@ -74,6 +73,13 @@ function PokemonCard(props) {
         let unusedEVs = 508 - usedEVs;
         return unusedEVs;
     }
+
+    useEffect(()=>{
+        let trueStats = {}
+        Object.keys(statAbbrevs).forEach((statName) => trueStats[statName] = trueStatValue(statName));
+        props.setStats(trueStats);
+        console.log(trueStats);
+    });
 
     return(
         <div className="card"> {/* TODO: Make a new class for this formatting */}
@@ -131,7 +137,7 @@ function PokemonCard(props) {
                         setEvValue={(newValue) => setEvValues({...evValues, [statName]:newValue})}
                         ivValue={ivValues[statName]}
                         setIvValue={(newValue) => setIvValues({...ivValues, [statName]:newValue})}
-                        statValue={trueStatValue(statName)}
+                        statValue={props.ownStats[statName]}
                         remainingEVs={remainingEVs(statName)}
                     />
                 )
