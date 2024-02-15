@@ -9,7 +9,6 @@ function TrainingBox(props) {
     const [evs, setEVs] = useState(Object.fromEntries(Object.keys(statAbbrevs).map(statName => [statName, 0])));
     const [ivs, setIVs] = useState(Object.fromEntries(Object.keys(statAbbrevs).map(statName => [statName, 0])));
     const [nature, setNature] = useState("Serious");
-    const [level, setLevel] = useState(100);
     const natures = {
         "Adamant":	["Attack",	"Sp. Atk"],
         "Bashful":	["Sp. Atk",	"Sp. Atk"],
@@ -51,11 +50,11 @@ function TrainingBox(props) {
         let statValue;
         if (statName === "HP"){
             let multiplier = 2 * Number(baseStat) + Number(statIV) + Math.floor(Number(statEV)/4);
-            statValue = Math.floor(multiplier * Number(level) / 100) + Number(level) + 10;
+            statValue = Math.floor(multiplier * Number(props.level) / 100) + Number(props.level) + 10;
         }
         else{
             let multiplier = 2 * Number(baseStat) + Number(statIV) + Math.floor(Number(statEV)/4);
-            let preNature =  Math.floor(multiplier * Number(level) / 100) + 5;
+            let preNature =  Math.floor(multiplier * Number(props.level) / 100) + 5;
             statValue = Math.floor(preNature * natureMultiplier);
         }
         return statValue;
@@ -99,15 +98,16 @@ function TrainingBox(props) {
             >
                 <p>Level: </p>
                 <TextInput 
-                    value={level}
-                    onChange={setLevel}
+                    value={props.level}
+                    onChange={props.setLevel}
                     width={2}
                 />
             </div>
             <div style={{
                 display:"flex", 
                 flexDirection:"row", 
-                alignItems:"baseline"
+                alignItems:"baseline",
+                alignSelf:"center"
             }}>
                 <p> Nature:</p>
                 <SearchableDropdown

@@ -1,5 +1,5 @@
 import allMons from '../../resources/pokemon.json';
-import allMoves from '../../resources/moves.json';
+import MoveBox from '../pokemon/MoveBox.js';
 import TypeIcon from './TypeIcon.js';
 import { useState } from 'react';
 import TrainingBox from './TrainingBox.js';
@@ -7,7 +7,7 @@ import SearchableDropdown from '../generic/SearchableDropdown.js';
 
 function PokemonCard(props) {
     const [pokemon, setPokemon] = useState("Blissey");
-    const [move, setMove] = useState("Flail");
+    const [level, setLevel] = useState(100);
 
     return(
         <div className="card"> {/* TODO: Make a new class for this formatting */}
@@ -30,6 +30,8 @@ function PokemonCard(props) {
                 }
             </div>
             <TrainingBox 
+                level={level}
+                setLevel={setLevel}
                 baseStats={allMons[pokemon]["Base Stats"]}
                 stats={props.ownStats}
                 setStat={
@@ -38,9 +40,10 @@ function PokemonCard(props) {
                 }
                 setStats={props.setStats}
             />
-            <SearchableDropdown 
-                items={Object.keys(allMoves)}
-                selectionAction={(selectedMove)=>setMove(selectedMove)}
+            <MoveBox
+                level={level}
+                attackerStats={props.ownStats}
+                defenderStats={props.opponentStats}
             />
         </div>
     );
