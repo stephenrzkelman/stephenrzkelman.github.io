@@ -10,18 +10,26 @@ function Duel(props) {
     );
     const [rightPokemonStats, setRightPokemonStats] = useState(
         Object.fromEntries(Object.keys(statAbbrevs).map(statName => [statName, 1]))
-    )
+    );
+    const [rightPokemonType, setRightPokemonType] = useState([]);
+    const [leftPokemonType, setLeftPokemonType] = useState([]);
     return(
         <div className="card-box">
             <PokemonCard 
                 ownStats={leftPokemonStats}
+                ownType={leftPokemonType}
                 opponentStats={rightPokemonStats} 
+                opponentType={rightPokemonType}
                 setStats={setLeftPokemonStats}
+                setType={setLeftPokemonType}
             />
             <PokemonCard
                 ownStats={rightPokemonStats}
+                ownType={rightPokemonType}
                 opponentStats={leftPokemonStats} 
+                opponentType={rightPokemonType}
                 setStats={setRightPokemonStats}
+                setType={setRightPokemonType}
             />
         </div>
     );

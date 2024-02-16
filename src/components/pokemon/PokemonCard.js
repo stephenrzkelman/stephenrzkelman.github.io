@@ -16,6 +16,8 @@ function PokemonCard(props) {
                 items={Object.keys(allMons)}
                 selectionAction={(selectedMon)=>{
                     setPokemon(selectedMon);
+                    props.setType(allMons[selectedMon]["Type"]);
+                    console.log(props.ownType);
                 }}
             />
             <img 
@@ -44,6 +46,8 @@ function PokemonCard(props) {
                 level={level}
                 attackerStats={props.ownStats}
                 defenderStats={props.opponentStats}
+                attackerType={props.ownType}
+                defenderType={props.opponentType}
             />
         </div>
     );

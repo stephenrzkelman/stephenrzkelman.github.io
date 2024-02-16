@@ -5,6 +5,7 @@ import SearchableDropdown from '../generic/SearchableDropdown';
 function MoveBox(props) {
     const [move, setMove] = useState("Flail");
     const [damage, setDamage] = useState(0);
+
     function damageCalc(){
         let moveInfo = allMoves[move];
         let moveType = moveInfo["type"];
@@ -26,7 +27,11 @@ function MoveBox(props) {
         let levelMultiplier = Math.floor(2 * (props.level) / 5) + 2;
         let baseMultiplier = Math.floor((levelMultiplier * movePower * attackerStat / defenderStat)/50) + 2;
 
-        setDamage(baseMultiplier);
+        let sameTypeAttackBonus = props.attackerType.includes(moveType) ? 1.5 : 1;
+
+        let damage = Math.floor(baseMultiplier * sameTypeAttackBonus);
+
+        setDamage(damage);
     }
 
     useEffect(()=>damageCalc());
