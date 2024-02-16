@@ -1,6 +1,7 @@
 import allMoves from '../../resources/moves.json';
 import { useState, useEffect } from 'react';
 import SearchableDropdown from '../generic/SearchableDropdown';
+import typeChart from '../../resources/typechart.json';
 
 function MoveBox(props) {
     const [move, setMove] = useState("Flail");
@@ -28,8 +29,12 @@ function MoveBox(props) {
         let baseMultiplier = Math.floor((levelMultiplier * movePower * attackerStat / defenderStat)/50) + 2;
 
         let sameTypeAttackBonus = props.attackerType.includes(moveType) ? 1.5 : 1;
+        let typeEffectiveness = props.defenderType.reduce(
+            (multiplier, type) => multiplier * typeChart[`${moveType}->${type}`],
+            1
+        );
 
-        let damage = Math.floor(baseMultiplier * sameTypeAttackBonus);
+        let damage = Math.floor(baseMultiplier * sameTypeAttackBonus * typeEffectiveness);
 
         setDamage(damage);
     }
