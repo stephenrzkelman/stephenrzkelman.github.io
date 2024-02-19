@@ -5,7 +5,6 @@ function DropdownList(props){
     const cursorRef = useRef(null);
 
     function scrollfn(){
-        console.log("Called!");
         if(cursorRef.current){
             cursorRef.current.scrollIntoView({block:'nearest'});
         }

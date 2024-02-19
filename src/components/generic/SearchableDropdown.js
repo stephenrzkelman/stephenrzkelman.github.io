@@ -51,7 +51,6 @@ function SearchableDropdown(props){
         else{
             setDropdownOpen(true);
         }
-        console.log(cursor);
     }
 
     return(
@@ -60,7 +59,7 @@ function SearchableDropdown(props){
                 type="text"
                 className="text-input"
                 value={value}
-                onClick={()=>{setDropdownOpen(!dropdownOpen); console.log(`value: "${value}"`)}}
+                onClick={()=>{setDropdownOpen(!dropdownOpen);}}
                 onChange={(e)=> {
                     setCursor(0);
                     setValue(e.target.value);

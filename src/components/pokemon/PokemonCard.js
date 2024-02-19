@@ -17,7 +17,6 @@ function PokemonCard(props) {
                 selectionAction={(selectedMon)=>{
                     setPokemon(selectedMon);
                     props.setType(allMons[selectedMon]["Type"]);
-                    console.log(props.ownType);
                 }}
             />
             <img 

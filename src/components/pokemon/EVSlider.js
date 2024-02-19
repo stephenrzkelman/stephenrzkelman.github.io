@@ -13,7 +13,6 @@ function EVSlider(props){
             <TextInput
                 value={props.evValue}
                 onChange={(newValue)=>{
-                    console.log("Text changed!");
                     newValue = Number(newValue.replace(/\D/g,''));
                     props.setEvValue(newValue);
                 }}
@@ -28,7 +27,6 @@ function EVSlider(props){
                 className = "slider"
                 value={props.evValue}
                 onChange={(e)=> {
-                    console.log("Changed!");
                     props.setEvValue(Number(e.target.value));
                 }}
             />
