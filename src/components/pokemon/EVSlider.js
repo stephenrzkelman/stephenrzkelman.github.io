@@ -13,31 +13,29 @@ function EVSlider(props){
             <TextInput
                 value={props.evValue}
                 onChange={(newValue)=>{
-                    newValue = newValue.replace(/\D/g,'');
-                    newValue = Math.max(0,Math.min(252, props.remainingEVs(props.statName), newValue));
+                    console.log("Text changed!");
+                    newValue = Number(newValue.replace(/\D/g,''));
                     props.setEvValue(newValue);
-                    console.log(props.remainingEVs(props.statName));
                 }}
                 width={2}
             />
             {/* TODO:  robust validation for text input */}
             <input 
                 type="range"
-                min="0"
-                max="252"
-                step="4"
+                min={0}
+                max={252}
+                step={4}
                 className = "slider"
                 value={props.evValue}
                 onChange={(e)=> {
-                    let newValue = Math.min(props.remainingEVs(props.statName), e.target.value);
-                    props.setEvValue(newValue);
+                    console.log("Changed!");
+                    props.setEvValue(Number(e.target.value));
                 }}
             />
             <TextInput
                 value={props.ivValue}
                 onChange={(newValue)=>{
-                    newValue = newValue.replace(/\D/g,'');
-                    newValue = Math.max(0,Math.min(31, newValue));
+                    newValue = Number(newValue.replace(/\D/g,''));
                     props.setIvValue(newValue);
                 }}
                 width={2}

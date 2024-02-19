@@ -25,3 +25,5 @@
 [Scroll only specific div](https://stackoverflow.com/questions/56688002/javascript-scrollintoview-only-in-immediate-parent)
 
 [Update component after render/return](https://legacy.reactjs.org/docs/hooks-effect.html)
+
+[Run UseEffect only once, on load](https://stackoverflow.com/questions/53120972/how-to-call-loading-function-with-react-useeffect-only-once)

@@ -7,6 +7,7 @@ import EVSlider from './EVSlider.js';
 function TrainingBox(props) {
     const statAbbrevs = {"HP":"HP", "Attack":"Atk", "Defense":"Def", "Sp. Atk": "SpA", "Sp. Def": "SpD", "Speed": "Spe"};
     const [evs, setEVs] = useState(Object.fromEntries(Object.keys(statAbbrevs).map(statName => [statName, 0])));
+    const [remainingEVs, setRemainingEVs] = useState(508);
     const [ivs, setIVs] = useState(Object.fromEntries(Object.keys(statAbbrevs).map(statName => [statName, 0])));
     const [nature, setNature] = useState("Serious");
     const natures = {
@@ -67,16 +68,30 @@ function TrainingBox(props) {
         props.setStats(newStats);
     }
 
-    function remainingEVs(statName){
-        let usedEVs = Object.values(evs).reduce((sum, ev) => sum + ev, 0);
-        if(statName) 
-            usedEVs -= evs[statName];
-        let unusedEVs = 508 - usedEVs;
-        console.log(`remainingEVs(${statName}) -- EVs: ${Object.entries(evs)}`);
-        return unusedEVs;
+    function updateStat(statName, ev, iv, nature){
+        props.setStats({...props.stats, [statName]:statCalc(statName, ev, iv, nature)})
     }
 
-    useEffect(()=>updateAllStats(evs, ivs, nature));
+    function updateNature(newNature){
+        setNature(newNature);
+        updateAllStats(evs, ivs, newNature);
+    }
+
+    function updateEV(statName, newEV){
+        let availableEVs = remainingEVs + evs[statName];
+        newEV = Math.max(0, Math.min(252, availableEVs, newEV));
+        setEVs({...evs, [statName]:newEV});
+        setRemainingEVs(availableEVs - newEV);
+        updateStat(statName, newEV, ivs[statName], nature);
+    }
+
+    function updateIV(statName, newIV){
+        newIV = Math.max(0, Math.min(31, newIV));
+        setIVs({...ivs, [statName]:newIV});
+        updateStat(statName, evs[statName], newIV, nature);
+    }
+
+    useEffect(()=>updateAllStats(evs, ivs, nature), []);
 
     return(
         <div
@@ -116,7 +131,7 @@ function TrainingBox(props) {
                             `${nature} (+${statAbbrevs[plus]}, -${statAbbrevs[minus]})`
                     )}
                     selectionAction={(natureText)=>{
-                        setNature(natureText.split(" ")[0]);
+                        updateNature(natureText.split(" ")[0]);
                     }}
                 />
             </div>
@@ -127,13 +142,12 @@ function TrainingBox(props) {
                         statValue={props.stats[statName]}
                         evValue={evs[statName]}
                         setEvValue={(newValue) => {
-                            setEVs({...evs, [statName]:newValue});
+                            updateEV(statName, newValue);
                         }}
                         ivValue={ivs[statName]}
                         setIvValue={(newValue) => {
-                            setIVs({...ivs, [statName]:newValue});
+                            updateIV(statName, newValue);
                         }}
-                        remainingEVs={remainingEVs}
                     />
                 )
             }
