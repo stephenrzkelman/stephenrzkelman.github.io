@@ -8,6 +8,7 @@ import SearchableDropdown from '../generic/SearchableDropdown.js';
 function PokemonCard(props) {
     const [pokemon, setPokemon] = useState("Blissey");
     const [level, setLevel] = useState(100);
+    const [baseStats, setBaseStats] = useState(allMons[pokemon]["Base Stats"])
 
     return(
         <div className="card"> {/* TODO: Make a new class for this formatting */}
@@ -17,6 +18,7 @@ function PokemonCard(props) {
                 selectionAction={(selectedMon)=>{
                     setPokemon(selectedMon);
                     props.setType(allMons[selectedMon]["Type"]);
+                    setBaseStats(allMons[selectedMon]["Base Stats"]);
                 }}
             />
             <img 
@@ -33,12 +35,13 @@ function PokemonCard(props) {
             <TrainingBox 
                 level={level}
                 setLevel={setLevel}
-                baseStats={allMons[pokemon]["Base Stats"]}
+                baseStats={baseStats}
                 stats={props.ownStats}
                 setStat={
                     (statName, statValue) =>
                     {props.setStats({...props.ownStats, [statName]: statValue});}
                 }
+                updateAllStats={props.updateAllStats}
                 setStats={props.setStats}
             />
             <MoveBox
