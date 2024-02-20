@@ -5,7 +5,7 @@ import typeChart from '../../resources/typechart.json';
 
 function MoveBox(props) {
     const [move, setMove] = useState("Flail");
-    const [damage, setDamage] = useState(0);
+    const [damage, setDamage] = useState([0,0]);
 
     function damageCalc(){
         let moveInfo = allMoves[move];
@@ -36,7 +36,9 @@ function MoveBox(props) {
 
         let damage = Math.floor(baseMultiplier * sameTypeAttackBonus * typeEffectiveness);
 
-        setDamage(damage);
+        let lowDamage = Math.floor(0.85 * damage);
+
+        setDamage([lowDamage, damage]);
     }
 
     useEffect(()=>damageCalc());
@@ -56,10 +58,11 @@ function MoveBox(props) {
             />
             <p
                 style={{
-                    width:"10rem",
+                    width:"20rem",
                     textAlign:"right"
                 }}
-            >Damage: {damage}</p>
+            >Damage: {damage[0]} - {damage[1]}
+            </p>
         </div>
     )
 }
