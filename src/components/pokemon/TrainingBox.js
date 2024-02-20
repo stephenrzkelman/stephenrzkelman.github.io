@@ -135,6 +135,19 @@ function TrainingBox(props) {
                     }}
                 />
             </div>
+            <div style={{
+                display:"flex",
+                flexDirection:"row",
+                justifyContent:"stretch",
+                width:"100%"
+            }}>
+                <div style={{width:"3rem"}}/>
+                {"EVs"}
+                <div style={{width:"9rem"}}/>
+                {"IVs"}
+                <div style={{width:"1.5rem"}}/>
+                {"Stats"}
+            </div>
             {
                 (Object.keys(statAbbrevs)).map(
                     (statName) => <EVSlider 
@@ -151,6 +164,7 @@ function TrainingBox(props) {
                     />
                 )
             }
+            {`Remaining EVs: ${remainingEVs}`}
         </div>
     )
 }
