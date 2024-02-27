@@ -54,6 +54,7 @@ function TrainingBox(props) {
                 flexDirection:"column",
                 alignItems:"baseline",
                 justifyContent:"center",
+                rowGap: "0px",
                 width:"100%"
             }}
         >
@@ -62,7 +63,8 @@ function TrainingBox(props) {
                     display:"flex", 
                     flexDirection:"row", 
                     alignItems:"baseline",
-                    alignSelf:"center"
+                    alignSelf:"center",
+                    justifyContent: "space-between"
                 }}
             >
                 <p>Level: </p>
@@ -71,13 +73,7 @@ function TrainingBox(props) {
                     onChange={props.setLevel}
                     width={2}
                 />
-            </div>
-            <div style={{
-                display:"flex", 
-                flexDirection:"row", 
-                alignItems:"baseline",
-                alignSelf:"center"
-            }}>
+                <div style={{width:"7rem"}}/>
                 <p> Nature:</p>
                 <SearchableDropdown
                     items={Object.entries(natures).map(
@@ -93,7 +89,8 @@ function TrainingBox(props) {
                 display:"flex",
                 flexDirection:"row",
                 justifyContent:"stretch",
-                width:"100%"
+                width:"100%",
+                height: "0.5rem"
             }}>
                 <div style={{width:"3rem"}}/>
                 {"EVs"}
@@ -118,7 +115,17 @@ function TrainingBox(props) {
                     />
                 )
             }
-            {`Remaining EVs: ${remainingEVs}`}
+            <div style={{height:"0.5rem"}}/>
+            <div style={{
+                display:"flex",
+                flexDirection:"row",
+                justifyContent:"stretch",
+                width:"100%",
+                height: "0.5rem"
+            }}>
+                <div style={{width:"0.65rem"}}/>
+                {`Remaining EVs: ${remainingEVs}`}
+            </div>
         </div>
     )
 }

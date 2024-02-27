@@ -12,7 +12,7 @@ function PokemonCard(props) {
 
     return(
         <div className="card"> {/* TODO: Make a new class for this formatting */}
-            <h2>{pokemon}</h2>
+            {/* <h2>{pokemon}</h2> */}
             <SearchableDropdown
                 items={Object.keys(allMons)}
                 selectionAction={(selectedMon)=>{
@@ -44,6 +44,7 @@ function PokemonCard(props) {
                 updateAllStats={props.updateAllStats}
                 setStats={props.setStats}
             />
+            <div style={{height:"1rem"}}/>
             <MoveBox
                 level={level}
                 attackerStats={props.ownStats}
