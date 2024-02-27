@@ -47,7 +47,7 @@ function Duel(props) {
                 ownStats={rightPokemonStats}
                 ownType={rightPokemonType}
                 opponentStats={leftPokemonStats} 
-                opponentType={rightPokemonType}
+                opponentType={leftPokemonType}
                 setStats={setRightPokemonStats}
                 updateAllStats={updateAllStats(setRightPokemonStats)}
                 setType={setRightPokemonType}
