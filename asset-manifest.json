@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/static/css/main.29d17c0c.css",
-    "main.js": "/static/js/main.8a998426.js",
+    "main.css": "/static/css/main.cde9d391.css",
+    "main.js": "/static/js/main.85c59b64.js",
     "static/js/787.c922dae8.chunk.js": "/static/js/787.c922dae8.chunk.js",
     "static/media/necrozma-ultra.png": "/static/media/necrozma-ultra.12cde6962fcc829aef53.png",
     "static/media/metagross-mega.png": "/static/media/metagross-mega.1b2bec1e3037a4a969f0.png",
@@ -196,12 +196,12 @@
     "static/media/deoxys-speed.png": "/static/media/deoxys-speed.b32b3aad0afa8cd33b4d.png",
     "static/media/darkrai.png": "/static/media/darkrai.a94e3f484230725e1159.png",
     "index.html": "/index.html",
-    "main.29d17c0c.css.map": "/static/css/main.29d17c0c.css.map",
-    "main.8a998426.js.map": "/static/js/main.8a998426.js.map",
+    "main.cde9d391.css.map": "/static/css/main.cde9d391.css.map",
+    "main.85c59b64.js.map": "/static/js/main.85c59b64.js.map",
     "787.c922dae8.chunk.js.map": "/static/js/787.c922dae8.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.29d17c0c.css",
-    "static/js/main.8a998426.js"
+    "static/css/main.cde9d391.css",
+    "static/js/main.85c59b64.js"
   ]
 }
