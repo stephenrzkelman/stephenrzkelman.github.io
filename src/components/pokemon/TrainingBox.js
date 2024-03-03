@@ -26,6 +26,13 @@ function TrainingBox(props) {
         })
     }
 
+    function updateLevel(newLevel){
+        newLevel = Number(newLevel.replace(/\D/g,''));
+        newLevel = Math.max(0,Math.min(100, newLevel));
+        props.setLevel(newLevel);
+        props.updateAllStats(props.baseStats, evs, ivs, nature, newLevel);
+    }
+
     function updateNature(newNature){
         setNature(newNature);
         props.updateAllStats(props.baseStats, evs, ivs, newNature, props.level);
@@ -70,7 +77,7 @@ function TrainingBox(props) {
                 <p>Level: </p>
                 <TextInput 
                     value={props.level}
-                    onChange={props.setLevel}
+                    onChange={updateLevel}
                     width={2}
                 />
                 <div style={{width:"7rem"}}/>
