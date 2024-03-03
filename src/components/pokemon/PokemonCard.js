@@ -4,6 +4,7 @@ import TypeIcon from './TypeIcon.js';
 import { useState } from 'react';
 import TrainingBox from './TrainingBox.js';
 import SearchableDropdown from '../generic/SearchableDropdown.js';
+import StatModifier from './StatModifier.js';
 
 function PokemonCard(props) {
     const [pokemon, setPokemon] = useState("Blissey");
@@ -44,6 +45,8 @@ function PokemonCard(props) {
                 updateAllStats={props.updateAllStats}
                 setStats={props.setStats}
             />
+            <div style={{height:"2rem"}}/>
+            <StatModifier statName={"Attack"}/>
             <div style={{height:"1rem"}}/>
             <MoveBox
                 level={level}

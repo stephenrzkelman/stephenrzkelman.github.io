@@ -78,3 +78,16 @@ input {
     width: 100%;
     height: 2.25rem;
 }
+
+.btn {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 25px;
+    height: 25px;
+    border-width: 1px;
+    border-style: outset;
+    border-radius: 10px;
+    border-color: #aaa;
+    background: linear-gradient(to bottom,#f6f6f6,#d3d3d3);
+    cursor: pointer;
+}

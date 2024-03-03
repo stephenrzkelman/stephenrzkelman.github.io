@@ -1,5 +1,5 @@
 // import logo from './logo.svg';
-import Duel from './components/pokemon/Duel.js'
+import Duel from './components/pokemon/Duel.js';
 import './App.css';
 
 function App() {
