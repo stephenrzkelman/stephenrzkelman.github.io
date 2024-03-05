@@ -3,9 +3,8 @@ import '../../style/inputs.css';
 import '../../style/misc.css';
 
 function StatModifier(props){
-    const [statChange, setStatChange] = useState(0);
     const [statChangeArray, setStatChangeArray] = useState(Array(6).fill(1));
-    let statChangeSymbols = [ <p>&#9660;</p>, <p>&#9679;</p>, <p>&#9650;</p>];
+    let statChangeSymbols = [ <p style={{width:"1rem"}}>&#9660;</p>, <p style={{width:"1rem"}}>&#9679;</p>, <p style={{width:"1rem"}}>&#9650;</p>];
 
     function updateStatChangeArray(targetIndex, adjustment){
         setStatChangeArray(statChangeArray.map((value, index)=>{
@@ -19,26 +18,26 @@ function StatModifier(props){
     }
 
     function statBoost(){
-        if(statChange >= +6){
+        if(props.statChange >= +6){
             return;
         }
-        let indexToChange = statChange >= 0 ? statChange : Math.abs(statChange + 1);
+        let indexToChange = props.statChange >= 0 ? props.statChange : Math.abs(props.statChange + 1);
         updateStatChangeArray(indexToChange, +1)
-        setStatChange(statChange + 1);
+        props.setStatChange(props.statChange + 1);
     }
 
     function statDrop(){
-        if(statChange <= -6){
+        if(props.statChange <= -6){
             return;
         }
-        let indexToChange = statChange <= 0 ? Math.abs(statChange) : statChange - 1;
+        let indexToChange = props.statChange <= 0 ? Math.abs(props.statChange) : props.statChange - 1;
         updateStatChangeArray(indexToChange, -1);
-        setStatChange(Math.max(-6, statChange - 1));
+        props.setStatChange(Math.max(-6, props.statChange - 1));
     }
 
     return(
     <div className="stat-modifier">
-        {props.statName}
+        <p style={{textAlign:"left", width:"4rem"}}>{props.statName}</p>
         {/* minus button */}
         <button 
             className="btn"
@@ -46,7 +45,7 @@ function StatModifier(props){
         >
             -
         </button>
-        {statChange}
+        <p style={{textAlign:"center", width:"2rem"}}>{props.statChange}</p>
         {statChangeArray.map((index)=>statChangeSymbols[index])}
         <button
             className="btn"

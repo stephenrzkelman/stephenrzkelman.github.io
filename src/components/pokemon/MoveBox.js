@@ -1,9 +1,11 @@
 import allMoves from '../../resources/moves.json';
 import { useState, useEffect } from 'react';
 import SearchableDropdown from '../generic/SearchableDropdown';
+import StatModifier from './StatModifier';
 import typeChart from '../../resources/typechart.json';
 
 function MoveBox(props) {
+    const statAbbrevs = {"HP":"HP", "Attack":"Atk", "Defense":"Def", "Sp. Atk": "SpA", "Sp. Def": "SpD", "Speed": "Spe"};
     const [move, setMove] = useState("Flail");
     const [damage, setDamage] = useState([0,0]);
 
@@ -46,23 +48,42 @@ function MoveBox(props) {
         <div
             style={{
                 display:"flex",
-                flexDirection:"row",
+                flexDirection:"column",
                 alignItems:"baseline",
                 width:"100%"
             }}
         >
-            <p>Move: </p>
-            <SearchableDropdown 
-                items={Object.keys(allMoves)}
-                selectionAction={(selectedMove)=>setMove(selectedMove)}
-            />
-            <p
-                style={{
-                    width:"20rem",
-                    textAlign:"right"
-                }}
-            >Damage: {damage[0]} - {damage[1]}
-            </p>
+            {
+                (Object.keys(statAbbrevs)).map(
+                    (statName) => <StatModifier 
+                        statName={statName}
+                        statChange={props.attackerStatChanges[statName]}
+                        setStatChange={(statChange) => props.setStatChange(statName, statChange)}
+                    />
+                )
+            }
+            <div style={{height:"1rem"}}/>
+            <div
+            style={{
+                display:"flex",
+                flexDirection:"row",
+                alignItems:"baseline",
+                width:"100%"
+            }}
+            >
+                <p>Move: </p>
+                <SearchableDropdown 
+                    items={Object.keys(allMoves)}
+                    selectionAction={(selectedMove)=>setMove(selectedMove)}
+                />
+                <p
+                    style={{
+                        width:"20rem",
+                        textAlign:"right"
+                    }}
+                >Damage: {damage[0]} - {damage[1]}
+                </p>
+            </div>
         </div>
     )
 }
