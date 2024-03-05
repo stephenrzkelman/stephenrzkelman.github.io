@@ -54,7 +54,7 @@ function PokemonCard(props) {
                     {props.setStatChanges({...props.ownStatChanges, [statName]: statChange});}
                 }
                 defenderStats={props.opponentStats}
-                defenderStatChanges={props.opponsnetStatChanges}
+                defenderStatChanges={props.opponentStatChanges}
                 attackerType={props.ownType}
                 defenderType={props.opponentType}
             />
