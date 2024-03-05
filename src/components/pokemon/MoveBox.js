@@ -76,7 +76,7 @@ function MoveBox(props) {
             }}
         >
             {
-                (Object.keys(statAbbrevs)).map(
+                (Object.keys(statAbbrevs).slice(1)).map(
                     (statName) => <StatModifier 
                         statName={statName}
                         statChange={props.attackerStatChanges[statName]}
