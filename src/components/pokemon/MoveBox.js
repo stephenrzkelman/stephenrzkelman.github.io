@@ -8,6 +8,7 @@ function MoveBox(props) {
     const statAbbrevs = {"HP":"HP", "Attack":"Atk", "Defense":"Def", "Sp. Atk": "SpA", "Sp. Def": "SpD", "Speed": "Spe"};
     const [move, setMove] = useState("Flail");
     const [damage, setDamage] = useState([0,0]);
+    const [displayAsPercent, setDisplayAsPercent] = useState(true);
 
     function statModifierCalc(statChange){
         if(statChange >= 0){
@@ -60,7 +61,12 @@ function MoveBox(props) {
         let lowDamage = Math.floor(0.85 * highDamage);
         let critHighDamage = Math.floor(baseCritMultiplier * sameTypeAttackBonus * typeEffectiveness * 1.5);
         let critLowDamage = Math.floor(0.85 * critHighDamage);
-
+        if(displayAsPercent){
+            highDamage = `${(100 * highDamage/props.defenderStats["HP"]).toPrecision(4)}%`;
+            lowDamage = `${(100 * lowDamage/props.defenderStats["HP"]).toPrecision(4)}%`;
+            critHighDamage = `${(100 * critHighDamage/props.defenderStats["HP"]).toPrecision(4)}%`;
+            critLowDamage = `${(100 * critLowDamage/props.defenderStats["HP"]).toPrecision(4)}%`;
+        }
         setDamage([lowDamage, highDamage, critLowDamage, critHighDamage]);
     }
 
@@ -100,19 +106,39 @@ function MoveBox(props) {
                 />
                 <table
                     style={{
-                        width:"25rem",
+                        width:"27rem",
                         textAlign:"right"
                     }}
                 >
                     <tr>
                         <td>Damage:</td>
-                        <td>{damage[0]} - {damage[1]}</td>
+                        <td>{damage[0]}</td>
+                        <td>-</td>
+                        <td>{damage[1]}</td>
                     </tr>
                     <tr>
                         <td>Crit:</td>
-                        <td>{damage[2]} - {damage[3]}</td>
+                        <td>{damage[2]}</td>
+                        <td>-</td>
+                        <td>{damage[3]}</td>
                     </tr>
                 </table>
+            </div>
+            <div
+            style={{
+                display:"flex",
+                flexDirection:"row",
+                alignItems:"baseline",
+                justifyContent:"flex-end",
+                width:"100%"
+            }}>
+                <p>Display damage as: </p>
+                <button className="btn" onClick={()=>setDisplayAsPercent(true)}>
+                %
+                </button>
+                <button className="btn" onClick={()=>setDisplayAsPercent(true)}>
+                    #
+                </button>
             </div>
         </div>
     )
