@@ -5,11 +5,11 @@ import StatModifier from './StatModifier';
 import typeChart from '../../resources/typechart.json';
 
 function MoveBox(props) {
-    const statAbbrevs = {"HP":"HP", "Attack":"Atk", "Defense":"Def", "Sp. Atk": "SpA", "Sp. Def": "SpD", "Speed": "Spe"};
     const [move, setMove] = useState("Flail");
     const [damage, setDamage] = useState([0,0]);
     const [displayAsPercent, setDisplayAsPercent] = useState(true);
 
+    
     function statModifierCalc(statChange){
         if(statChange >= 0){
             return (2 + statChange)/2;
@@ -18,7 +18,7 @@ function MoveBox(props) {
             return 2/(2-statChange);
         }
     }
-
+    
     function damageCalc(){
         let moveInfo = allMoves[move];
         let moveType = moveInfo["type"];
@@ -81,16 +81,6 @@ function MoveBox(props) {
                 width:"100%"
             }}
         >
-            {
-                (Object.keys(statAbbrevs).slice(1)).map(
-                    (statName) => <StatModifier 
-                        statName={statName}
-                        statChange={props.attackerStatChanges[statName]}
-                        setStatChange={(statChange) => props.setStatChange(statName, statChange)}
-                    />
-                )
-            }
-            <div style={{height:"1rem"}}/>
             <div
             style={{
                 display:"flex",

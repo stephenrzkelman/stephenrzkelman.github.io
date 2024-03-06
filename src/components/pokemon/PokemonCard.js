@@ -1,4 +1,5 @@
 import allMons from '../../resources/pokemon.json';
+import GameData from './GameData.js';
 import MoveBox from '../pokemon/MoveBox.js';
 import TypeIcon from './TypeIcon.js';
 import { useState } from 'react';
@@ -45,14 +46,18 @@ function PokemonCard(props) {
                 setStats={props.setStats}
             />
             <div style={{height:"1rem"}}/>
-            <MoveBox
-                level={level}
-                attackerStats={props.ownStats}
+            <GameData 
                 attackerStatChanges={props.ownStatChanges}
                 setStatChange={
                     (statName, statChange) =>
                     {props.setStatChanges({...props.ownStatChanges, [statName]: statChange});}
                 }
+            />
+            <div style={{height:"1rem"}}/>
+            <MoveBox
+                level={level}
+                attackerStats={props.ownStats}
+                attackerStatChanges={props.ownStatChanges}
                 defenderStats={props.opponentStats}
                 defenderStatChanges={props.opponentStatChanges}
                 attackerType={props.ownType}
