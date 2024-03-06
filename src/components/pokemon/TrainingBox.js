@@ -55,50 +55,34 @@ function TrainingBox(props) {
     useEffect(()=>props.updateAllStats(props.baseStats, evs, ivs, nature, props.level), [props.baseStats]);
 
     return(
-        <div
-            style={{
-                display:"flex",
-                flexDirection:"column",
-                alignItems:"baseline",
-                justifyContent:"center",
-                rowGap: "0px",
-                width:"100%"
-            }}
-        >
-            <div
-                style={{
-                    display:"flex", 
-                    flexDirection:"row", 
-                    alignItems:"baseline",
-                    alignSelf:"center",
-                    justifyContent: "space-between"
-                }}
-            >
-                <p>Level: </p>
-                <TextInput 
-                    value={props.level}
-                    onChange={updateLevel}
-                    width={2}
-                />
-                <div style={{width:"7rem"}}/>
-                <p> Nature:</p>
-                <SearchableDropdown
-                    items={Object.entries(natures).map(
-                        ([nature, [plus, minus]], _)=>
-                            `${nature} (+${statAbbrevs[plus]}, -${statAbbrevs[minus]})`
-                    )}
-                    selectionAction={(natureText)=>{
-                        updateNature(natureText.split(" ")[0]);
-                    }}
-                />
+        <div className="multi-row">
+            <div className="single-row-centered" style={{justifyContent:"space-around"}}>
+                <div className="single-row" style={{width:"20%"}}>
+                    <p>Level: </p>
+                    <TextInput 
+                        value={props.level}
+                        onChange={updateLevel}
+                        width={2}
+                    />
+                </div>
+                <div className="single-row" style={{width:"60%"}}>
+                    <p> Nature:</p>
+                    <SearchableDropdown
+                        items={Object.entries(natures).map(
+                            ([nature, [plus, minus]], _)=>
+                                `${nature} (+${statAbbrevs[plus]}, -${statAbbrevs[minus]})`
+                        )}
+                        selectionAction={(natureText)=>{
+                            updateNature(natureText.split(" ")[0]);
+                        }}
+                    />
+                </div>
             </div>
-            <div style={{
-                display:"flex",
-                flexDirection:"row",
-                justifyContent:"stretch",
-                width:"100%",
-                height: "0.5rem"
-            }}>
+            {/* TODO: change this part of training box to table display */}
+            <div 
+                className="single-row" 
+                style={{height:"0.5rem"}}
+            >
                 <div style={{width:"3rem"}}/>
                 {"EVs"}
                 <div style={{width:"9rem"}}/>
@@ -123,13 +107,7 @@ function TrainingBox(props) {
                 )
             }
             <div style={{height:"0.5rem"}}/>
-            <div style={{
-                display:"flex",
-                flexDirection:"row",
-                justifyContent:"stretch",
-                width:"100%",
-                height: "0.5rem"
-            }}>
+            <div className="single-row">
                 <div style={{width:"0.65rem"}}/>
                 {`Remaining EVs: ${remainingEVs}`}
             </div>

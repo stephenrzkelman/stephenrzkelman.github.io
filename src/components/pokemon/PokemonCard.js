@@ -45,7 +45,7 @@ function PokemonCard(props) {
                 updateAllStats={props.updateAllStats}
                 setStats={props.setStats}
             />
-            <div style={{height:"1rem"}}/>
+            <div style={{height:"0.5rem"}}/>
             <GameData 
                 attackerStatChanges={props.ownStatChanges}
                 setStatChange={

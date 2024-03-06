@@ -1,7 +1,7 @@
 import allMoves from '../../resources/moves.json';
+import '../../style/misc.css'
 import { useState, useEffect } from 'react';
 import SearchableDropdown from '../generic/SearchableDropdown';
-import StatModifier from './StatModifier';
 import typeChart from '../../resources/typechart.json';
 
 function MoveBox(props) {
@@ -72,23 +72,8 @@ function MoveBox(props) {
 
     useEffect(()=>damageCalc());
     return(
-        <div
-            style={{
-                display:"flex",
-                flexDirection:"column",
-                alignItems:"baseline",
-                justifyContent:"flex-start",
-                width:"100%"
-            }}
-        >
-            <div
-            style={{
-                display:"flex",
-                flexDirection:"row",
-                alignItems:"baseline",
-                width:"100%"
-            }}
-            >
+        <div className='multi-row'>
+            <div className='single-row'>
                 <p>Move: </p>
                 <SearchableDropdown 
                     items={Object.keys(allMoves)}
@@ -114,14 +99,7 @@ function MoveBox(props) {
                     </tr>
                 </table>
             </div>
-            <div
-            style={{
-                display:"flex",
-                flexDirection:"row",
-                alignItems:"baseline",
-                justifyContent:"flex-end",
-                width:"100%"
-            }}>
+            <div className='single-row' style={{justifyContent:"flex-end"}}>
                 <p>Display damage as: </p>
                 <button className="btn" onClick={()=>setDisplayAsPercent(true)}>
                 %

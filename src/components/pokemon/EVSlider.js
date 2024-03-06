@@ -4,7 +4,7 @@ import TextInput from '../generic/TextInput';
 
 function EVSlider(props){
     const statAbbrevs = {"HP":"HP", "Attack":"Atk", "Defense":"Def", "Sp. Atk": "SpA", "Sp. Def": "SpD", "Speed": "Spe"};
-
+    // TODO: put all of this in table formatting
     return(
         <div className="ev-slider">
             <p style={{width: "3rem"}}>
