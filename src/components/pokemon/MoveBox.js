@@ -136,7 +136,7 @@ function MoveBox(props) {
                 <button className="btn" onClick={()=>setDisplayAsPercent(true)}>
                 %
                 </button>
-                <button className="btn" onClick={()=>setDisplayAsPercent(true)}>
+                <button className="btn" onClick={()=>setDisplayAsPercent(false)}>
                     #
                 </button>
             </div>
