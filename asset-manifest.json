@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/static/css/main.114e3ab2.css",
-    "main.js": "/static/js/main.e18463f9.js",
+    "main.js": "/static/js/main.238068ad.js",
     "static/js/787.c922dae8.chunk.js": "/static/js/787.c922dae8.chunk.js",
     "static/media/necrozma-ultra.png": "/static/media/necrozma-ultra.12cde6962fcc829aef53.png",
     "static/media/metagross-mega.png": "/static/media/metagross-mega.1b2bec1e3037a4a969f0.png",
@@ -197,11 +197,11 @@
     "static/media/darkrai.png": "/static/media/darkrai.a94e3f484230725e1159.png",
     "index.html": "/index.html",
     "main.114e3ab2.css.map": "/static/css/main.114e3ab2.css.map",
-    "main.e18463f9.js.map": "/static/js/main.e18463f9.js.map",
+    "main.238068ad.js.map": "/static/js/main.238068ad.js.map",
     "787.c922dae8.chunk.js.map": "/static/js/787.c922dae8.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.114e3ab2.css",
-    "static/js/main.e18463f9.js"
+    "static/js/main.238068ad.js"
   ]
 }
