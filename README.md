@@ -29,3 +29,7 @@
 [Run UseEffect only once, on load](https://stackoverflow.com/questions/53120972/how-to-call-loading-function-with-react-useeffect-only-once)
 
 [Re-rendering component when props change](https://stackoverflow.com/questions/37009328/re-render-react-component-when-prop-changes)
+
+[Set Text Input Placeholder](https://stackoverflow.com/questions/13506481/change-placeholder-text)
+
+[Center Placeholder Text](https://stackoverflow.com/questions/7381446/center-html-input-text-field-placeholder)

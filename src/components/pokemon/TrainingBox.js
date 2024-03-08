@@ -75,6 +75,7 @@ function TrainingBox(props) {
                         selectionAction={(natureText)=>{
                             updateNature(natureText.split(" ")[0]);
                         }}
+                        placeholder="-- Select Nature --"
                     />
                 </div>
             </div>

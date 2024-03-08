@@ -91,3 +91,7 @@ input {
     background: linear-gradient(to bottom,#f6f6f6,#d3d3d3);
     cursor: pointer;
 }
+
+::placeholder {
+    text-align: center; 
+ }

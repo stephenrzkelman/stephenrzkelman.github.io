@@ -65,6 +65,7 @@ function SearchableDropdown(props){
                     setValue(e.target.value);
                 }}
                 onKeyDown={handleKeyDown}
+                placeholder={props.placeholder}
             />
             {
                 dropdownOpen && 

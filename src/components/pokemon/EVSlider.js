@@ -18,7 +18,6 @@ function EVSlider(props){
                 }}
                 width={2}
             />
-            {/* TODO:  robust validation for text input */}
             <input 
                 type="range"
                 min={0}

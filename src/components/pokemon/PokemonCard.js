@@ -21,6 +21,7 @@ function PokemonCard(props) {
                     props.setType(allMons[selectedMon]["Type"]);
                     setBaseStats(allMons[selectedMon]["Base Stats"]);
                 }}
+                placeholder="-- Select Pokemon --"
             />
             <img 
                 src={require(`../../resources/images/${pokemon.toLowerCase()}.png`)}

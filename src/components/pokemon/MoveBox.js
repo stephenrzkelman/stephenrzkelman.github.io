@@ -78,6 +78,7 @@ function MoveBox(props) {
                 <SearchableDropdown 
                     items={Object.keys(allMoves)}
                     selectionAction={(selectedMove)=>setMove(selectedMove)}
+                    placeholder="-- Select Move --"
                 />
                 <table
                     style={{
