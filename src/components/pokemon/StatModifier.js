@@ -3,8 +3,28 @@ import '../../style/inputs.css';
 import '../../style/misc.css';
 
 function StatModifier(props){
-    const [statChangeArray, setStatChangeArray] = useState(Array(6).fill(1));
-    let statChangeSymbols = [ <p style={{width:"1rem"}}>&#9660;</p>, <p style={{width:"1rem"}}>&#9679;</p>, <p style={{width:"1rem"}}>&#9650;</p>];
+    const [statChangeArray, setStatChangeArray] = useState(initialStatChangeArray());
+    let statChangeSymbols = [ 
+        <p style={{width:"1rem"}}>&#9660;</p>, 
+        <p style={{width:"1rem"}}>&#9679;</p>, 
+        <p style={{width:"1rem"}}>&#9650;</p>
+    ];
+
+    function initialStatChangeArray(){
+        if(props.statChange > 0){
+            let head = Array(props.statChange).fill(2);
+            let tail = Array(6-props.statChange).fill(1);
+            return head.concat(tail);
+        }
+        else if(props.statChange < 0){
+            let head = Array(-props.statChange).fill(0);
+            let tail = Array(6+props.statChange).fill(1);
+            return head.concat(tail);
+        }
+        else{
+            return Array(6).fill(1);
+        }
+    }
 
     function updateStatChangeArray(targetIndex, adjustment){
         setStatChangeArray(statChangeArray.map((value, index)=>{
