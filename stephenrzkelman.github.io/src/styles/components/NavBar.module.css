@@ -1,0 +1,42 @@
+.navbar {
+    width: 100%;
+    height: 5rem;
+    display: flex;
+    background-color: #5B88B1;
+}
+
+.navbar * {
+    display: flex;
+}
+
+.navbar ul {
+    /* margin and padding 0 to get rid of default indent/above-spacing for ul sections */
+    margin: 0;
+    padding: 0;
+    justify-content: flex-start;
+    height: 100%;
+}
+
+.navbar li {
+    height: 100%;
+    list-style: none; /*get rid of default ul dots*/
+}
+
+.navbar li:hover{
+    background-color: #43698C;
+}
+
+.navbar a {
+    align-items: center;
+    text-decoration: none; /*remove default link underline*/
+    font-size: 1.5rem;
+    color: #FFF9E2;
+    height: 100%;
+    padding: 0 2em;
+}
+
+/* .navbar a:hover,
+.navbar a:active,
+.navbar a.active {
+    color: white;
+} */
