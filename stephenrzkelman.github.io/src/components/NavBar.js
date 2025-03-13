@@ -11,6 +11,9 @@ function NavBar() {
                 <li>
                     <Link to="/other">Other</Link>
                 </li>
+                <li>
+                    <Link to="/resume">Resume</Link>
+                </li>
             </ul>
         </div>
     );
