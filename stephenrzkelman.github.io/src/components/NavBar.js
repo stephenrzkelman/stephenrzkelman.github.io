@@ -1,19 +1,20 @@
 import { Link } from 'react-router-dom';
 import styles from '../styles/components/NavBar.module.css';
+import { allPages } from '../util';
 
 function NavBar() {
     return (
         <div className={styles.navbar}>
             <ul>
-                <li>
-                    <Link to="/">Home</Link>
-                </li>
-                <li>
-                    <Link to="/other">Other</Link>
-                </li>
-                <li>
-                    <Link to="/resume">Resume</Link>
-                </li>
+                {
+                    allPages().map(
+                        ([pageName, _]) => <li>
+                            <Link to={pageName.substring(1).toLowerCase()}>
+                                {pageName.substring(2)}
+                            </Link>
+                        </li>
+                    )
+                }
             </ul>
         </div>
     );

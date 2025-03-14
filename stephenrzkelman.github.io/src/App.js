@@ -1,17 +1,25 @@
+import {createElement} from 'react';
 import {Route, Routes} from 'react-router-dom';
-import Home from './pages/Home';
-import Other from './pages/Other';
-import Resume from './pages/Resume';
 import NavBar from './components/NavBar';
+import { allPages } from './util';
 
 function App() {
+
   return (
     <div height="100%" width="100%">
       <NavBar/>
       <Routes>
-        <Route exact path="/" element={<Home/>}/>
-        <Route exact path="/other" element={<Other/>}/>
-        <Route exact path="/resume" element={<Resume/>}/>
+        {
+          allPages().map(
+            ([pageName, pageComponent]) => {
+              console.log(`page name: ${pageName}`);
+              return <Route
+                exact path={pageName.substring(1).toLowerCase()}
+                element={createElement(pageComponent)}
+              />;
+            }
+          )
+        }
       </Routes>
     </div>
   );
